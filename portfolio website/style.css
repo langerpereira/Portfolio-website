@@ -10,8 +10,8 @@
 
 :root {
   --bg-color: #080808;
-  --second-bg-color: #131313;
-  --text-color: white;
+  --second-bg-color: #272727;
+  --text-color: rgb(61, 61, 61);
   --main-color1: #f535aa;
   --main-color2: #04d9ff;
 }
@@ -24,39 +24,66 @@
   height: 100%;
   z-index: -1;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-color) ;
 }
 
 body {
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
 
 .header {
   position: fixed;
-  margin-top: 15px;
   top: 0;
-  left: 25%;
-  width: 50%;
-  height: 14%;
-  background: rgba(33, 33, 33, 0.3);
-  border-radius: 50px;
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 4rem !important;
+  background-color: rgba(33, 33, 33, 0.3); 
   align-items: center;
+  justify-content: space-between; /* Adjusted alignment */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 1000;
+  border-radius: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.03), 0 0 10px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(4rem) !important;
 }
 
 .navbar-nav {
   width: 100%;
   display: flex;
+  flex-direction: column; 
+  align-items: center;
   justify-content: center;
-  margin-top: 13px;
 }
 
 .navbar-nav .nav-item {
-  margin: 0 20px; /* Adjust the horizontal spacing between nav items */
+  margin: 10px 0; /* Adjusted margin */
 }
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    background-color: transparent !important; /* Make background transparent on mobile */
+    backdrop-filter: blur(10px) !important; /* Add blur effect on mobile */
+  }
+
+  .navbar-nav {
+    margin-top: 0;
+    backdrop-filter: blur(4rem); 
+  background-color: rgba(33, 33, 33, 0.3) !important; 
+  }
+}
+
+@media (min-width: 640px) {
+  .header {
+    top: 2rem;
+    height: 3.25rem;
+    width: 36rem;
+    border-radius: 2.25rem;
+  }
+}
+
 
 .navbar-nav .nav-item .nav-link {
   font-weight: 500;
@@ -143,7 +170,8 @@ span {
 
 .home-content p {
   flex: 1;
-  max-width: 10%;
+  max-width: 100% !important;
+  line-height: 30px !important;
 }
 
 .home-content p {
@@ -174,21 +202,22 @@ span {
   background-color: var(--main-color1);
 }
 
-.btn {
+.custom-btn{
+  text-decoration: none;
   display: inline-block;
-  padding: 1rem;
+  padding: 1rem 2.8rem;
   background: var(--main-color2);
   box-shadow: 0 0 25px var(--main-color1);
   border-radius: 4rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: black;
   border: 2px solid transparent;
-  font-weight: 600;
+  font-weight: 550;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
-.btn:hover {
+.custom-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 50px var(--main-color2);
 }
@@ -206,26 +235,97 @@ span {
   box-shadow: 0 0 25px transparent;
 }
 
-.text-animation span {
+.btn-group a:nth-of-type(2):hover{
+  box-shadow: 0 0 25px var(--main-color2);
+  background-color: var(--main-color1);
+  color: black;
+}
+
+.text-animator {
+  font-size: 34px;
+  font-weight: 600;
+  min-width: 280px;
+}
+
+.text-animator span{
   position: relative;
 }
 
-.text-animation span::before {
+.text-animator span::before{
   content: "Web Developer";
   color: var(--main-color1);
   animation: words 20s infinite;
 }
 
-.text-animation span::before {
+.text-animator span::after {
   content: "";
   background-color: var(--bg-color);
   position: absolute;
   width: calc(100% + 8px);
-  height: 100%;
+  height: 60px;
+  top: 50%;
+  transform: translateY(18%);
   border-left: 3px solid var(--bg-color);
   right: -8px;
   animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
 }
+
+@keyframes cursor {
+  to{
+    border-left: 2px solid var(--main-color2);
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "Frontend Designer";
+  }
+  21%,
+  40% {
+    content: "Web Designer";
+  }
+  41%,
+  60% {
+    content: "Figma Designer";
+  }
+  61%,
+  80% {
+    content: "Ux / Ui Designer";
+  }
+  81%,
+  100% {
+    content: "Software Engineer";
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95%{
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85%,
+  100%{
+    width: calc(100% + 90px);
+  }
+}
+
 
 /* Adjustments for mobile view */
 @media (max-width: 768px) {
