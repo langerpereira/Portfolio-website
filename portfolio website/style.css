@@ -370,8 +370,7 @@ span {
 }
 
 .education{
-  padding: 100px 15px;
-  background: var(--second-bg-color);
+  padding: 50px 15px;
 }
 
 .education h2{
@@ -460,3 +459,14 @@ span {
   background-color: var(--bg-color);
   width: 50px;
 }
+
+.separator {
+  border: 1px solid white; 
+  margin: 50px auto; 
+  width: 80%; 
+}
+
+.project{
+  margin-top: 100px;
+}
+

@@ -145,3 +145,15 @@ update = function() {
 };
 requestAnimationFrame(update);
 
+
+// Get the education section
+const educationSection = document.querySelector('.education');
+
+// Add scroll event listener
+window.addEventListener('scroll', function() {
+  // Calculate scroll position
+  let scrollPosition = window.pageYOffset;
+
+  // Apply parallax effect to education section
+  educationSection.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+});
