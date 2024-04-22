@@ -146,14 +146,18 @@ update = function() {
 requestAnimationFrame(update);
 
 
-// Get the education section
-const educationSection = document.querySelector('.education');
 
-// Add scroll event listener
-window.addEventListener('scroll', function() {
-  // Calculate scroll position
-  let scrollPosition = window.pageYOffset;
-
-  // Apply parallax effect to education section
-  educationSection.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("custom-btn") && event.target.hasAttribute("download")) {
+      event.preventDefault();
+      const fileUrl = event.target.getAttribute("href");
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.setAttribute("download", "");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  }
 });
+
+
