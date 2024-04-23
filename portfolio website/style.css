@@ -29,8 +29,58 @@
 
 body {
   background: var(--bg-color) !important;
-  color: var(--text-color) !important;
+  color: var(--text-color) !important; 
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 2rem;/* Resetting body margin */
+    padding: 0; /* Resetting body padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  .container {
+    margin: 0 auto; 
+    padding: 0 15px; 
+  }
+
+  /* Adjusting specific sections */
+  .home {
+    padding: 0 15px; 
+  }
+
+  .education,
+  .project1,
+  .skills,
+  .contact {
+    padding: 0 15px; 
+    margin-bottom: 3rem; 
+  }
+  .custom-btn {
+    /* Other button styles */
+    max-width: 100%; 
+    display: block; 
+    margin: 0 auto; 
+  }
+  
+  .btn-group {
+    /* Other styles */
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .home-img {
+    text-align: center;
+  }
+  
+  .home-img img {
+    width: 80%; 
+    max-width: 300px;
+    display: block; 
+    margin: auto; 
+  }
+}
+
 
 .header {
   position: fixed;
@@ -388,15 +438,15 @@ span {
   margin-bottom: 5rem;
 }
 
-.timeline-items{
-  max-width: 1200px;
+.timeline-items {
+  max-width: 90%; /* Adjusted maximum width for responsiveness */
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   position: relative;
 }
 
-.timeline-items::before{
+.timeline-items::before {
   content: "";
   position: absolute;
   width: 5px;
@@ -405,24 +455,30 @@ span {
   left: calc(50% - 1px);
 }
 
-.timeline-item{
-  margin-bottom: 40px;
+.timeline-item {
+  margin-bottom: 2rem; /* Adjusted margin for spacing */
   width: 100%;
   position: relative;
 }
 
-.timeline-item:last-child{
-  margin-bottom: 0;
-}
-
-.timeline-item:nth-child(odd){
+.timeline-item:nth-child(odd) {
   padding-right: calc(50% + 30px);
   text-align: right;
 }
 
-.timeline-item:nth-child(even){
+.timeline-item:nth-child(even) {
   padding-left: calc(50% + 30px);
 }
+
+@media (max-width: 768px) {
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding-right: 20px; /* Adjusted padding for smaller screens */
+    padding-left: 20px; /* Adjusted padding for smaller screens */
+    text-align: left;
+  }
+}
+
 
 .timeline-dot{
   height: 21px;
@@ -483,7 +539,8 @@ span {
 
 /* projects */
 .project {
-  margin: 0;
+  margin: 0 auto; /* Center the project section horizontally */
+  max-width: 1200px; 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -492,26 +549,28 @@ span {
   color: #eee;
   user-select: none;
   display: grid;
-   grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
+  padding: 0 20px;
   margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  .project-section {
+  .project {
     grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 576px) {
-  .project-section {
+  .project {
     grid-template-columns: 1fr;
   }
 }
 
 .nft{
-  user-select:none;
   max-width: 300px;
+  user-select:none;
+  width: 100%;
   margin-bottom: 1rem;
   border: 1px solid #ffffff22;
   background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
@@ -645,4 +704,33 @@ span {
 .skill-item:hover {
   background-color: rgba(255, 255, 255, 0.9);
   color: black;
+}
+
+.contact-text{
+  color: #eee;
+  text-align: center;
+  font-size: 1rem;
+}
+
+@keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+  0%{
+    opacity: 0;
+  }
+}
+
+p,
+h1,
+.timeline-item,
+.nft,
+.skill-item,
+.heading{
+  animation: fade linear both;
+  animation-timeline: view();
+  animation-range: entry 50% cover 50%;
 }
