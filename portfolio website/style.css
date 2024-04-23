@@ -86,7 +86,7 @@ body {
   .header {
     top: 2rem;
     height: 3.25rem;
-    width: 36rem;
+    width: auto;
     border-radius: 2.25rem;
   }
 }
@@ -499,13 +499,13 @@ span {
 
 @media (max-width: 768px) {
   .project-section {
-    grid-template-columns: repeat(2, 1fr); /* Adjusting the number of columns to 2 when the screen width is 768px or less */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 576px) {
   .project-section {
-    grid-template-columns: 1fr; /* Adjusting the number of columns to 1 when the screen width is 576px or less */
+    grid-template-columns: 1fr;
   }
 }
 
